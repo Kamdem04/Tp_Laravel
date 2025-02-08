@@ -20,15 +20,6 @@
             min-height: 100vh;
         }
 
-        h1 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
-            font-size: 2.8rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            border-bottom: 3px solid var(--secondary-color);
-            display: inline-block;
-            padding-bottom: 0.5rem;
-        }
 
         .navbar {
             background: var(--primary-color);
@@ -79,26 +70,16 @@
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">📚 Book Catalog</a>
+        <div class="container d-flex justify-content-center">
+            <a class="navbar-brand" href="#">📚 Catalogue de livres</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Se connecter</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#registerModal">S'inscrire</a>
-                    </li>
-                </ul>
-            </div>
+            
         </div>
     </nav>
 
     <div class="container mt-5">
-        <h1 class="mb-5 text-center">Catalogue de livres</h1>
         <div class="row">
             @foreach($books as $book)
                 <div class="col-lg-4 col-md-6 mb-4">
@@ -107,7 +88,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $book->titre }}</h5>
                             <p class="card-text">{{ Str::limit($book->resume, 100) }}</p>
-                            <p class="card-text"><strong>Auteur :</strong> {{ $book->auteur->nom }}</p>
+                            <p class="card-text"><strong>Auteur :</strong> {{ $book->auteur_nom}}</p>
                             <p><small class="text-muted">Publié le : {{ date('d/m/Y', strtotime($book->date_publication)) }}</small></p>
                         </div>
                         <div class="card-footer">
@@ -128,59 +109,6 @@
         </div>
     </footer>
 
-    <!-- Modal Connexion -->
-    <div class="modal fade" id="loginModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Connexion</h5>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" class="form-control" placeholder="Entrez votre email">
-                        </div>
-                        <div class="form-group">
-                            <label>Mot de passe</label>
-                            <input type="password" class="form-control" placeholder="Mot de passe">
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Inscription -->
-    <div class="modal fade" id="registerModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Inscription</h5>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label>Nom</label>
-                            <input type="text" class="form-control" placeholder="Entrez votre nom">
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" class="form-control" placeholder="Entrez votre email">
-                        </div>
-                        <div class="form-group">
-                            <label>Mot de passe</label>
-                            <input type="password" class="form-control" placeholder="Mot de passe">
-                        </div>
-                        <button type="submit" class="btn btn-success btn-block">S'inscrire</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>

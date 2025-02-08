@@ -24,3 +24,4 @@ Route::get('/books.show', function () {
 Route::get('/', [App\Http\Controllers\LivreController::class, 'index']);
 // Route::get('/livres/{id}', 'BookController@show')->name('books.show');
 Route::get('/livres/{id}', [App\Http\Controllers\LivreController::class, 'show'])->name('books.show');
+Route::get('/con', [App\Http\Controllers\LivreController::class, 'index']);
